@@ -1,4 +1,4 @@
-package com.testChrome;
+package com.ChromeWebSearch;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -14,28 +14,11 @@ public class BrowserSearch {
     String searchQuery = "test";
     WebDriver driver;
 
-    @Test
-    public void testBrowser(){
-        System.setProperty("webdriver.chrome.driver","D:/java/selenium/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("http://google.com.ua/");
-        Browser browser = new Browser(driver);
-        browser.browserSearch(searchQuery);
-
-        Assert.assertEquals(browser.getTitle(), searchQuery + " - Google Search");
-
-        driver.close();
-    }
-}
-
-class Browser{
-    WebDriver driver;
-
     String pageTitle;
     @FindBy(name = "q")
     private WebElement searchInput;
 
-    Browser(WebDriver driver){
+    BrowserSearch(WebDriver driver){
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
